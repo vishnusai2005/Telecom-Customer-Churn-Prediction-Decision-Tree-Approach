@@ -1,9 +1,9 @@
 # Telecom Customer Churn Prediction using Decision Trees
 
-## 📌 Overview
+##  Overview
 This project implements a Machine Learning workflow to predict telecom customer churn using a **Decision Tree Classifier**. The goal is to identify customers who are likely to cancel their subscriptions based on their demographic details, account information, and service usage. The project covers the entire pipeline from Automated Exploratory Data Analysis (EDA) to Data Preprocessing, Model Training, and Hyperparameter Tuning.
 
-## 📊 Dataset
+##  Dataset
 The dataset used is the **Telecom Customer Churn** dataset. It contains customer-level data with 21 columns including:
 * **Demographics:** `gender`, `SeniorCitizen`, `Partner`, `Dependents`
 * **Account Info:** `tenure`, `Contract`, `PaperlessBilling`, `PaymentMethod`, `MonthlyCharges`, `TotalCharges`
@@ -18,7 +18,7 @@ The dataset used is the **Telecom Customer Churn** dataset. It contains customer
 * **Scikit-Learn** (Machine Learning & Preprocessing)
 * **SciPy** (Statistical distributions for tuning)
 
-## 🚀 Project Workflow
+## Project Workflow
 
 ### 1. Exploratory Data Analysis (EDA)
 Instead of manual univariate and bivariate analysis, this project utilizes the **Sweetviz** library to generate a comprehensive, highly-detailed HTML report (`sweetviz_report.html`). This automated report rapidly outlines feature distributions, correlations, and relationships with the target variable.
