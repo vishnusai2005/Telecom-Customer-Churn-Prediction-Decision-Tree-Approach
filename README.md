@@ -1,32 +1,56 @@
-# Telecom-Customer-Churn-Prediction-Decision-Tree-Approach
+# Telecom Customer Churn Prediction using Decision Trees
 
-##  Project Overview
-Customer retention is a critical metric for telecommunication companies. This project implements a **Decision Tree Classifier** to predict customer churn based on historical data. By analyzing customer demographics, account information, and service usage, the model aims to identify customers at high risk of leaving, enabling business teams to design proactive retention strategies.
+## 📌 Overview
+This project implements a Machine Learning workflow to predict telecom customer churn using a **Decision Tree Classifier**. The goal is to identify customers who are likely to cancel their subscriptions based on their demographic details, account information, and service usage. The project covers the entire pipeline from Automated Exploratory Data Analysis (EDA) to Data Preprocessing, Model Training, and Hyperparameter Tuning.
 
-##  About the Developer
-Hello! I am Vydhyam Vishnusai, an ML-based developer and third-year B.Tech student specializing in Computer Science (Artificial Intelligence and Machine Learning) at Mohan Babu University. As I prepare for Machine Learning Engineer roles, I built this repository to demonstrate my proficiency in Python-driven data science, end-to-end data pipelines, exploratory data analysis (EDA), and predictive modeling.
+## 📊 Dataset
+The dataset used is the **Telecom Customer Churn** dataset. It contains customer-level data with 21 columns including:
+* **Demographics:** `gender`, `SeniorCitizen`, `Partner`, `Dependents`
+* **Account Info:** `tenure`, `Contract`, `PaperlessBilling`, `PaymentMethod`, `MonthlyCharges`, `TotalCharges`
+* **Services:** `PhoneService`, `InternetService`, `OnlineSecurity`, `TechSupport`, etc.
+* **Target Variable:** `Churn` (Yes/No)
 
-##  Tech Stack & Tools
-* **Language:** Python
-* **Data Manipulation:** Pandas, NumPy
-* **Machine Learning:** Scikit-Learn
-* **Data Visualization:** Matplotlib, Seaborn
-* **Automated EDA:** Sweetviz
+## 🛠️ Tech Stack & Libraries
+* **Python 3.x**
+* **Pandas & NumPy** (Data Manipulation)
+* **Matplotlib & Seaborn** (Data Visualization)
+* **Sweetviz** (Automated EDA)
+* **Scikit-Learn** (Machine Learning & Preprocessing)
+* **SciPy** (Statistical distributions for tuning)
 
-##  Dataset & Preprocessing
-The dataset used contains **7,043** customer records and **21** features, including `tenure`, `MonthlyCharges`, `Contract` type, and the target variable `Churn`. 
-* **Data Cleaning:** Transformed `TotalCharges` to numeric data types, handling missing or anomalous values by filling them with `0`. Standardized the structure by setting `customerID` as the dataset index.
-* **Exploratory Data Analysis:** Leveraged **Sweetviz** to generate a comprehensive HTML report, rapidly visualizing target characteristics and feature associations (e.g., the correlation between `tenure` and `Churn`).
-* **Feature Encoding:** Applied `LabelEncoder` across 16 categorical features to transform categorical text data into a machine-readable format.
+## 🚀 Project Workflow
 
-##  Model Architecture
-* **Algorithm:** Decision Tree Classifier
-* **Core Hyperparameters:** `criterion='entropy'`, `random_state=42`
+### 1. Exploratory Data Analysis (EDA)
+Instead of manual univariate and bivariate analysis, this project utilizes the **Sweetviz** library to generate a comprehensive, highly-detailed HTML report (`sweetviz_report.html`). This automated report rapidly outlines feature distributions, correlations, and relationships with the target variable.
 
-##  Model Performance & Evaluation
-The model was evaluated using both accuracy scores and a detailed classification report to measure its predictive power on unseen data:
-* **Training Accuracy:** `93.59%`
-* **Testing Accuracy:** `70.12%`
-* **Analysis:** The model achieves a high training accuracy but experiences a drop during testing, which is a classic indicator of high variance (overfitting) native to deep Decision Trees. The testing data yielded a macro average F1-score of `0.60` and a precision of `0.79` for non-churning customers. Recognizing this variance is a crucial step in the ML lifecycle, pointing directly to the next phase of optimization.
+### 2. Data Transformation & Preprocessing
+* **Indexing:** Set `customerID` as the dataframe index to exclude it from predictive modeling while keeping records identifiable.
+* **Handling Data Types & Missing Values:** Converted the `TotalCharges` column to a numeric data type, forcefully coercing errors into `NaN`, and subsequently filling missing values with `0`.
+* **Categorical Encoding:** Applied `LabelEncoder` from Scikit-Learn to convert 16 string/categorical variables into machine-readable numerical formats.
 
+### 3. Base Model Implementation
+* Split the dataset into training and testing sets.
+* Trained a baseline **Decision Tree Classifier** using the `entropy` criterion (Information Gain). 
 
+### 4. Hyperparameter Tuning
+To combat the natural tendency of Decision Trees to overfit the training data, extensive hyperparameter tuning was applied:
+* **GridSearchCV:** Conducted an exhaustive search over a specified parameter grid, adjusting `max_depth`, `max_leaf_nodes`, `min_samples_leaf`, and `min_samples_split`.
+* **RandomizedSearchCV:** Utilized to sample a given number of candidates from a parameter space with a specified distribution, optimizing for runtime while seeking high-quality splits.
+
+## 📈 Results & Evaluation
+The model's performance was evaluated using Accuracy Scores and detailed Classification Reports (Precision, Recall, F1-Score). Hyperparameter tuning successfully reduced overfitting and improved the model's generalization on unseen data.
+
+**Base Decision Tree Performance:**
+* Training Accuracy: ~82.87%
+* Testing Accuracy: ~75.94%
+
+**Tuned Decision Tree Performance (Best Params: `max_depth=7, max_leaf_nodes=20, min_samples_leaf=1, min_samples_split=2`):**
+* Training Accuracy: ~79.85%
+* Testing Accuracy: ~78.42%
+
+*Note: The reduction in training accuracy alongside the increase in testing accuracy demonstrates a successfully generalized model that mitigates overfitting.*
+
+## 💻 How to Run
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
