@@ -50,7 +50,4 @@ The model's performance was evaluated using Accuracy Scores and detailed Classif
 
 *Note: The reduction in training accuracy alongside the increase in testing accuracy demonstrates a successfully generalized model that mitigates overfitting.*
 
-## 💻 How to Run
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+
